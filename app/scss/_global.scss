@@ -1,0 +1,59 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  color: $black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link {
+  color: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1170px;
+  padding: 0 15px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.button {
+  height: 44px;
+  background-color: $green;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0px 1px 2px 0px rgba(69, 90, 100, 0.75);
+  cursor: pointer;
+
+  &:focus {
+    outline: transparent;
+  }
+}
+
+.title {
+  font-size: 20px;
+  padding: 21px 0 21px 33px;
+  border-bottom: 1px solid #d7d7d7;
+  color: #263238;
+}
+
+.text {
+  line-height: 24px;
+  color: $grey;
+}
