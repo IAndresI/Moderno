@@ -1,61 +1,22 @@
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
-  function rate(container) {
-    if (container) {
-      let star_container = document.querySelectorAll(container);
 
-      for (let count = 0; count < star_container.length; count++) {
-        let star_rate_count = Math.trunc(star_container[count].getAttribute("data-rate")),
-          last_star_rate = star_container[count].getAttribute("data-rate") % 1,
-          remaining_star = 5 - star_rate_count - (last_star_rate != 0 ? 1 : 0);
-        for (let i = 0; i < star_rate_count; i++) {
-          star_container[count].insertAdjacentHTML("beforeend",
-            `
-            <svg viewBox="0 0 535.5 535.5" width="15px" height="15px">
-              <g fill="gold">
-                <polygon points="535.5,210.375 344.25,210.375 267.75,19.125 191.25,210.375 0,210.375 172.125,325.125 95.625,516.375 
-                    267.75,401.625 439.875,516.375 363.375,325.125 	" />
-              </g>
-            </svg>
-          `
-          )
-        }
+  $(".rate-star").rateYo({
+    rating: 3.6,
+    starWidth: "12px",
+    spacing: "1px",
+    readOnly: true
+  });
 
-        if (last_star_rate != 0) {
-          star_container[count].insertAdjacentHTML("beforeend",
-            `
-            <svg viewBox="0 0 535.5 535.5" width="15px" height="15px">
-              <linearGradient id="gradient">
-                <stop offset="${last_star_rate*100}%" stop-color="gold"></stop>
-                <stop offset="${last_star_rate*100}%" stop-color="black"></stop>
-              </linearGradient>
-              <g fill="url(#gradient)" stroke-width="2">
-                <polygon points="535.5,210.375 344.25,210.375 267.75,19.125 191.25,210.375 0,210.375 172.125,325.125 95.625,516.375 
-                  267.75,401.625 439.875,516.375 363.375,325.125 	" />
-              </g>
-            </svg>
-          `
-          )
-        }
-
-        for (let i = 0; i < remaining_star; i++) {
-          star_container[count].insertAdjacentHTML("beforeend",
-            `
-            <svg viewBox="0 0 535.5 535.5" width="15px" height="15px">
-              <g fill="black">
-                <polygon points="535.5,210.375 344.25,210.375 267.75,19.125 191.25,210.375 0,210.375 172.125,325.125 95.625,516.375 
-                    267.75,401.625 439.875,516.375 363.375,325.125 	" />
-              </g>
-            </svg>
-          `
-          );
-        }
-      }
-    }
-
+  if (document.querySelector(".newest-products__list")) {
+    let mixer = mixitup(".newest-products__list");
   }
-  rate(".rate-star");
-  let mixer = mixitup(".newest-products__list");
+
+  if (document.querySelector(".product-page__tabs")) {
+    let mixerTab = mixitup(".products-page__tab-content");
+    mixerTab.filter('.features');
+  }
+
   $('.trending-products__slider').slick({
     slidesToShow: 4,
     dots: true,
@@ -86,6 +47,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ]
   });
 
+  $(".aside__slider").ionRangeSlider({
+    min: 0,
+    max: 1000,
+    from: 550,
+    type: "double",
+    prefix: "$"
+  });
+
   window.addEventListener("resize", function () {
     document.querySelector(".header__nav-list").classList.remove("show-nav");
     document.querySelector(".header__content").classList.remove("show-user");
@@ -103,4 +72,35 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector(".header__nav-adaptive").addEventListener("click", function () {
     document.querySelector(".header__nav-adaptive").classList.toggle("header__nav-adaptive--active");
   });
+
+  let productsFilter = document.querySelector(".products__button--sort-sm"),
+    productsFilterLarge = document.querySelector(".products__button--sort-lg"),
+    productsItems = document.querySelectorAll(".products__product-item");
+
+  if (productsFilter) {
+    function productSizeChange(productCurrentSize, productChangeSize, button, activeClass, target) {
+      document.querySelectorAll(button).forEach(element => {
+        element.classList.remove(activeClass);
+      });
+      target.classList.add(activeClass);
+      productsItems.forEach(element => {
+        element.classList.add(productChangeSize);
+        element.classList.remove(productCurrentSize);
+      });
+    }
+
+    productsFilter.addEventListener("click", (e) => {
+      productSizeChange("product-item--lg", "product-item--md", ".products__button", "products__button--active", e.target);
+    });
+
+    productsFilterLarge.addEventListener("click", (e) => {
+      productSizeChange("product-item--md", "product-item--lg", ".products__button", "products__button--active", e.target);
+    });
+
+    window.addEventListener("resize", function () {
+      if (document.documentElement.offsetWidth < 992) {
+        productSizeChange("product-item--lg", "product-item--md", ".products__button", "products__button--active", productsFilter);
+      }
+    });
+  }
 });

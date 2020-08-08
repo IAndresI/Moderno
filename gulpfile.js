@@ -1,6 +1,6 @@
 "use strict";
 
-let gulp = require("gulp"),
+const gulp = require("gulp"),
   sass = require("gulp-sass"),
   rename = require("gulp-rename"),
   browserSync = require("browser-sync"),
@@ -9,7 +9,7 @@ let gulp = require("gulp"),
   uglify = require("gulp-uglify"),
   cssmin = require("gulp-cssmin");
 
-gulp.task("sass", function () {
+const scss = () => {
   return gulp
     .src("app/scss/style.scss")
     .pipe(sass({
@@ -25,54 +25,74 @@ gulp.task("sass", function () {
     .pipe(browserSync.reload({
       stream: true
     }));
-});
+};
 
-gulp.task("html", function () {
+exports.scss = scss;
+
+const html = () => {
   return gulp.src("./app/*.html").pipe(browserSync.reload({
     stream: true
   }));
-});
+}
 
-gulp.task("js", function () {
+exports.html = html;
+
+const js = () => {
   return gulp.src("./app/js/*.js").pipe(browserSync.reload({
     stream: true
   }));
-});
+}
 
-gulp.task("watch", function () {
-  gulp.watch("./app/scss/*.scss", gulp.parallel("sass"));
-  gulp.watch("./app/*.html", gulp.parallel("html"));
-  gulp.watch("./app/js/*.js", gulp.parallel("js"));
-});
+exports.js = js;
 
-gulp.task("browser-sync", function () {
+const watch = () => {
+  gulp.watch("./app/scss/*.scss", gulp.parallel(scss));
+  gulp.watch("./app/*.html", gulp.parallel(html));
+  gulp.watch("./app/js/*.js", gulp.parallel(js));
+}
+
+exports.watch = watch;
+
+const browserS = () => {
   browserSync.init({
     server: {
       baseDir: "./app",
     },
   });
-});
+}
 
-gulp.task("script", function () {
+exports.browserS = browserS;
+
+const script = () => {
   return gulp
-    .src(["node_modules/slick-carousel/slick/slick.js", "node_modules/mixitup/dist/mixitup.js"])
+    .src(["node_modules/slick-carousel/slick/slick.js",
+      "node_modules/mixitup/dist/mixitup.js",
+      "node_modules/rateyo/src/jquery.rateyo.js",
+      "node_modules/ion-rangeslider/js/ion.rangeSlider.js"
+    ])
     .pipe(concat("libs.min.js"))
     .pipe(uglify())
     .pipe(gulp.dest("app/js"));
-});
+}
 
-gulp.task("style", function () {
+exports.script = script;
+
+const style = () => {
   return gulp
     .src([
       "node_modules/normalize.css/normalize.css",
       "node_modules/slick-carousel/slick/slick.css",
+      "node_modules/rateyo/src/jquery.rateyo.css",
+      "node_modules/ion-rangeslider/css/ion.rangeSlider.css"
     ])
     .pipe(concat("libs.min.css"))
     .pipe(cssmin())
     .pipe(gulp.dest("./app/css"));
-});
+}
+
+exports.style = style;
 
 gulp.task(
   "default",
-  gulp.parallel("watch", "browser-sync", "sass", "script", "style")
+  gulp.parallel(watch, browserS, scss, script, style)
 );
