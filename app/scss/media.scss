@@ -423,22 +423,23 @@
 
     &__notifications {
       order: 1;
+      margin-right: 0;
     }
 
     &__user {
       margin-bottom: 20px;
+      margin-right: 0;
     }
 
     &__content {
       position: absolute;
       max-height: 200px;
       background-color: #ffffff;
-      padding: 10px;
       right: 90px;
       top: 0;
       justify-content: center;
       transition: all .3s;
-
+      flex-direction: column;
       overflow: hidden;
       padding: 0;
       max-width: 0;
@@ -450,6 +451,13 @@
 
     &__adaptive {
       display: flex;
+    }
+  }
+
+  .dropdown {
+    &--user {
+      top: calc(100% +5px) !important;
+      left: -10px;
     }
   }
 }
@@ -760,5 +768,9 @@
     &__input {
       margin-right: 10px;
     }
+  }
+
+  .dropdown {
+    top: 44px !important;
   }
 }

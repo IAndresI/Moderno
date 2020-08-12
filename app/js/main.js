@@ -135,15 +135,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  $('.form__input--file, file').styler({
-    locale: 'en',
-    locales: {
-      'en': {
-        filePlaceholder: 'No file selected',
-        fileBrowse: 'Choose File',
-        fileNumber: 'Selected files: %s',
+  if (document.querySelector(".form__input--select")) {
+    $('.form__input--file, file').styler({
+      locale: 'en',
+      locales: {
+        'en': {
+          filePlaceholder: 'No file selected',
+          fileBrowse: 'Choose File',
+          fileNumber: 'Selected files: %s',
+        }
       }
-    }
-  });
-  $('.form__input--select, select').styler();
+    });
+  }
+
+  if (document.querySelector(".form__input--select")) {
+    $('.form__input--select, select').styler();
+  }
 });
