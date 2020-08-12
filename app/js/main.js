@@ -17,6 +17,20 @@ document.addEventListener("DOMContentLoaded", function () {
     mixerTab.filter('.features');
   }
 
+  if (document.querySelector(".profile__descriprion")) {
+    let mixerTab = mixitup(".profile__descriprion");
+    mixerTab.filter('.about');
+  }
+
+  if (document.querySelector(".settings__form")) {
+    let mixerProfile = mixitup(".settings__inner", {
+      animation: {
+        enable: false
+      }
+    });
+    mixerProfile.filter('.information');
+  }
+
   $('.trending-products__slider').slick({
     slidesToShow: 4,
     dots: true,
@@ -103,4 +117,33 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  let popup = document.querySelector(".popup"),
+    popupInner = document.querySelector(".popup__inner"),
+    popupClose = document.querySelector(".popup__close");
+
+  if (popup) {
+    document.querySelector(".header__button--login").addEventListener('click', function () {
+      popup.classList.add("show-popup");
+      popupInner.classList.add("show-popupinner");
+      popup.addEventListener("click", function close(e) {
+        if (e.target == popup || e.target == popupClose) {
+          popup.classList.remove("show-popup");
+          popupInner.classList.remove("show-popupinner");
+        }
+      });
+    });
+  }
+
+  $('.form__input--file, file').styler({
+    locale: 'en',
+    locales: {
+      'en': {
+        filePlaceholder: 'No file selected',
+        fileBrowse: 'Choose File',
+        fileNumber: 'Selected files: %s',
+      }
+    }
+  });
+  $('.form__input--select, select').styler();
 });

@@ -1,5 +1,38 @@
 @media (max-width: 1200px) {
 
+  .withdrawals {
+    &__inner {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__container {
+      margin-right: 0;
+      margin-bottom: 30px;
+
+      &:nth-child(1) {
+        order: 1;
+      }
+    }
+
+    .form {
+      &__label-text {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .profile {
+
+    &__aside {
+      max-width: 270px !important;
+    }
+
+    .aside__link {
+      width: 100%;
+    }
+  }
+
   .aside {
     max-width: 100%;
     padding-bottom: 80px;
@@ -117,9 +150,65 @@
       margin-bottom: 30px;
     }
   }
+
+  .settings {
+    &__aside {
+      max-width: 270px;
+    }
+  }
 }
 
 @media (max-width: 992px) {
+
+  .settings {
+    &__aside {
+      max-width: 100%;
+      padding-bottom: 10px;
+    }
+
+    &__inner {
+      flex-direction: column;
+    }
+  }
+
+  .contact {
+    &__form-top {
+      flex-direction: column;
+    }
+
+    &__input {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+
+  .profile {
+
+    &__tabs {
+      display: flex;
+      background-color: #ffffff;
+    }
+
+    &__aside {
+      max-width: 100% !important;
+    }
+
+    .aside {
+      padding-bottom: 0;
+
+      &__tabs {
+        display: none;
+      }
+    }
+
+    .social-link__list {
+      justify-content: center;
+    }
+
+    &__inner {
+      flex-direction: column;
+    }
+  }
 
   .product-page {
     &__more {
@@ -188,6 +277,73 @@
 }
 
 @media (max-width: 768px) {
+
+  .error {
+
+    &__inner {
+      padding: 30px 10px;
+    }
+
+    &__number {
+      font-size: 150px;
+    }
+
+    &__sorry {
+      letter-spacing: 3px;
+    }
+
+    &__image-container {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    &__image {
+      order: -1;
+    }
+  }
+
+  .form {
+    &__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    &__submit {
+      margin-left: 0;
+    }
+
+    &__container {
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .contact {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__form {
+      margin-bottom: 30px;
+    }
+
+    &__submit {
+      margin: 0 auto;
+    }
+
+    &__information {
+      max-width: 100%;
+      margin-right: 0;
+      order: 1;
+    }
+  }
 
   .product-page {
 
@@ -299,6 +455,111 @@
 }
 
 @media (max-width: 576px) {
+
+  .about {
+    padding-bottom: 60px;
+
+    &__container {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .error {
+    padding-bottom: 60px;
+  }
+
+  .withdrawals {
+    padding-bottom: 60px;
+
+    &__container {
+      &:last-child {
+        overflow-x: scroll;
+      }
+    }
+
+    &__table,
+    &__row {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .settings {
+    padding-bottom: 60px;
+  }
+
+  .popup {
+    &__button-container {
+      flex-direction: column;
+    }
+
+    &__submit {
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+
+    &__link {
+      height: 44px;
+
+      &--sm {
+        justify-content: center;
+      }
+    }
+
+    &__input {
+      margin-bottom: 20px;
+    }
+
+    &__inner {
+      padding: 0 20px;
+      justify-content: center;
+    }
+  }
+
+  .form {
+    padding-bottom: 60px;
+
+    .title {
+      text-align: center;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    &__label {
+      flex-direction: column;
+    }
+
+    &__text {
+      max-width: 100%;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    &--div {
+      padding: 0;
+    }
+  }
+
+  .contact {
+    &__form-title {
+      font-size: 20px;
+    }
+
+    &__image {
+      height: 200px;
+    }
+  }
+
+  .profile {
+    &__statistic {
+      flex-direction: column;
+    }
+
+    &__statistic-item {
+      width: 100%;
+    }
+  }
 
   .product-page {
     padding-bottom: 60px;
@@ -494,6 +755,10 @@
     &__footnote {
       padding: 10px;
       text-align: center;
+    }
+
+    &__input {
+      margin-right: 10px;
     }
   }
 }
