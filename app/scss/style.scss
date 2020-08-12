@@ -2861,8 +2861,6 @@
       outline: transparent;
       border: 1px solid $green;
     }
-
-    &:active {}
   }
 
   &__submit {
@@ -2872,18 +2870,16 @@
     font-weight: 500;
     transition: all .3s;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $green;
+      outline: transparent;
       background-color: $black;
     }
 
     &:active {
       color: $black;
       background-color: $green;
-    }
-
-    &:hover {
-      outline: transparent;
     }
   }
 
@@ -3135,18 +3131,16 @@
     margin-left: 175px;
     transition: all .3s;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: $black;
       color: $green;
+      outline: transparent;
     }
 
     &:active {
       background-color: $green;
       color: #ffffff;
-    }
-
-    &:focus {
-      outline: transparent;
     }
 
     &--big-mr {
