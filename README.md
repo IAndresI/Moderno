@@ -1,2 +1,2 @@
 # Moderno
-just my another oriject
+just my another project
