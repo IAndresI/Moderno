@@ -7,7 +7,7 @@ This is a marketplace with 10 pages!
 - ### Index ###
 [Index](https://iandresi.github.io/Moderno/app/ "Goto Index")
 - ### About ###
-[About](https://iandresi.github.io/Moderno/app/about.html "Goto About")
+[About](https://iandresi.github.io/Moderno/app/about-us.html "Goto About")
 - ### 404 ###
 [404](https://iandresi.github.io/Moderno/app/error.html "Goto 404")
 - ### Shop ###
